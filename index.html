@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прогноз погоди в Україні</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <h1>Прогноз погоди в Україні</h1>
+        <nav>
+            <a href="#weather">Погода</a>
+            <a href="weathernews.html">Новини</a>
+            <a href="manage_posts.html" class="admin-only">Управління постами</a>
+        </nav>
+    </header>
+    <main class="container">
+        <section id="weather">
+            <div class="search-container">
+                <input id="cityInput" class="search-input" type="search" placeholder="Введіть назву міста або села">
+                <button id="getWeatherBtn" class="search-btn">Отримати прогноз</button>
+            </div>
+            <div class="days-selector">
+                <button class="days-btn active" id="days3" value="3">3 дні</button>
+                <button class="days-btn" id="days5" value="5">5 днів</button>
+            </div>
+            <div id="weatherInfoContainer">
+                <div id="weatherCity" class="weather-city"></div>
+                <div id="weatherInfo" class="weather-info"></div>
+            </div>
+            <div id="loadingIndicator" class="loading-indicator" style="display:none;">
+                <img src="loading.gif" alt="Loading...">
+            </div>
+        </section>
+        <section id="adminLogin" class="modal" style="display:none;">
+            <h2>Вхід для адміністратора</h2>
+            <div class="admin-form">
+                <input type="text" id="username" class="form-control" placeholder="Ім'я користувача">
+                <input type="password" id="password" class="form-control" placeholder="Пароль">
+                <button id="loginBtn" class="btn btn-primary">Увійти</button>
+            </div>
+        </section>
+        <section id="admin" style="display:none;">
+            <h2>Адмінка</h2>
+            <div class="admin-form">
+                <input type="text" id="newsTitle" class="form-control" placeholder="Заголовок новини">
+                <textarea id="newsInput" class="form-control" placeholder="Введіть новину"></textarea>
+                <input type="text" id="imageURL" class="form-control" placeholder="URL зображення">
+                <input type="date" id="newsDate" class="form-control">
+                <button id="addNewsBtn" class="btn btn-primary">Додати новину</button>
+                <button id="logoutBtn" class="btn btn-secondary">Вийти</button>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>© 2024 Прогноз погоди в Україні. Всі права захищені.</p>
+        <form id="feedbackForm">
+            <h3>Зворотній зв'язок</h3>
+            <div class="form-group">
+                <input type="email" id="email" class="form-control" placeholder="Ваш Email" required>
+            </div>
+            <div class="form-group">
+                <textarea id="feedbackMessage" class="form-control" placeholder="Ваше повідомлення" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Відправити</button>
+        </form>
+    </footer>
+    
+    <div class="modal" id="newsModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Деталі новини</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
