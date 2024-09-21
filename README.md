@@ -1,8 +1,5 @@
 #Weather
 
-Here's a sample structure you could use for the README, without including "admin" and "news" if that was part of the original scope:
-
-
 # Project Title: **Weather Data Processing and Visualization** 
 
 ## Overview
